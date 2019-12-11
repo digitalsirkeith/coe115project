@@ -5,21 +5,30 @@ _CONFIG2 (POSCMOD_NONE & OSCIOFNC_ON & FCKSM_CSDCMD & FNOSC_FRCPLL & PLL96MHZ_OF
 _CONFIG3 (SOSCSEL_IO)
 
 #include "lcd.h"
+#include "eeprom.h"
 
 extern struct lcd LCD;
+extern struct ee_prom EEPROM;
 
 int main(void) {
-    LCD.init();
-    LCD.set_cursor(12);
+    char arr[] = "2015-01481";
+    char s[16];
+    int addr = 0x0f;
+    int i;
     
-    while (1)
-    {
-        __delay_ms(500);
-        if (_LATB13)
-            LCD.print_string("Putangina", "ng CoE 115!");
-        else
-            LCD.print_string("Kold", "Bantutan");
-        _LATB13 = ~_LATB13;
-    }
+    EEPROM.init();
+    LCD.init();
+    
+    EEPROM.write_string(addr, arr);    
+    EEPROM.read_string(addr, s, 10);
+    s[10] = 0;
+    LCD.set_line(0, s);
+    LCD.set_line(1, "KOLD");
+    LCD.data[47] = LCD.data[10];
+    
+    LCD.display();
+        
+    while (1);
+    
     return 0;
 }

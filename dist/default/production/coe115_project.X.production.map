@@ -18,6 +18,9 @@ Command:
   -L/Applications/microchip/xc16/v1.41/bin/bin/../../support/dsPIC33F/gld \
   build/default/production/lcd.o \
   build/default/production/main.o \
+  build/default/production/keypad.o \
+  build/default/production/eeprom.o \
+  build/default/production/i2c.o \
   --defsym=__MPLAB_BUILD=1 \
   -Tp24FJ64GB002.gld.00 \
   --stack=16 \
@@ -65,23 +68,23 @@ Default Scalar Model: Small
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x200                0xee           0x165  (357)
-.const                       0x2ee                0x26            0x39  (57)
-.text                        0x314               0x4f8           0x774  (1908)
-.dinit                       0x80c                0x4c            0x72  (114)
-.text                        0x858                0x48            0x6c  (108)
-.init.delay32                0x8a0                0x1c            0x2a  (42)
+.text                        0x200               0x12e           0x1c5  (453)
+.const                       0x32e                0x12            0x1b  (27)
+.text                        0x340               0x758           0xb04  (2820)
+.dinit                       0xa98                0x7a            0xb7  (183)
+.text                        0xb12                0x4e            0x75  (117)
+.init.delay32                0xb60                0x1c            0x2a  (42)
 
-                 Total "program" memory used (bytes):          0xa1a  (2586) 3%
+                 Total "program" memory used (bytes):          0xe3a  (3642) 5%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x2000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.data                        0x800                   0            0x64  (100)
+.data                        0x800                   0            0x94  (148)
 
-                 Total "data" memory used (bytes):           0x64  (100) 1%
+                 Total "data" memory used (bytes):           0x94  (148) 1%
 
 
 Dynamic Memory Usage
@@ -89,9 +92,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x864                              0x1f9c  (8092)
+stack                        0x894                              0x1f6c  (8044)
 
-                 Maximum dynamic memory (bytes):         0x1f9c  (8092)
+                 Maximum dynamic memory (bytes):         0x1f6c  (8044)
 
 Note: Project is using a large data memory model when small data memory model is sufficient.
 
@@ -99,52 +102,88 @@ Note: Project is using a large data memory model when small data memory model is
 External Symbols in Data Memory (by address):
 
                     0x0800                  _LCD
+                    0x0864                  _EEPROM
+                    0x0884                  _I2C
 
 External Symbols in Data Memory (by name):
 
+                    0x0864                  _EEPROM
+                    0x0884                  _I2C
                     0x0800                  _LCD
 
 External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x00023c                  __psv_init
-                  0x000252                  __data_init
                   0x000252                  __data_init_standard
-                  0x0002e8                  __DefaultInterrupt
-                  0x000314                  _io_init
-                  0x0003c6                  _lcd_init
-                  0x00047c                  _lcd_send4bits
-                  0x0004f0                  _lcd_send8bits
-                  0x0005fe                  _lcd_sendchar
-                  0x0006fa                  _lcd_cursor
-                  0x000732                  _lcd_copy_string
-                  0x00078c                  _lcd_print
-                  0x0007ce                  _lcd_print_string
-                  0x0007ec                  _lcd_home
-                  0x0007fe                  _lcd_clear
-                  0x000858                  _main
-                  0x0008a0                  ___delay32
+                  0x000252                  __data_init
+                  0x000328                  __DefaultInterrupt
+                  0x000340                  _io_init
+                  0x0003f2                  _lcd_init
+                  0x0004a8                  _lcd_send4bits
+                  0x00051c                  _lcd_send8bits
+                  0x00062a                  _lcd_sendchar
+                  0x000726                  _lcd_cursor
+                  0x00075e                  _lcd_copy_string
+                  0x0007b8                  _lcd_print
+                  0x0007fa                  _lcd_print_string
+                  0x000818                  _lcd_home
+                  0x00082a                  _lcd_clear
+                  0x000838                  _struct_init
+                  0x000876                  _eeprom_init
+                  0x000880                  _eeprom_read_byte
+                  0x0008d2                  _eeprom_write_byte
+                  0x000910                  _eeprom_write_string
+                  0x000942                  _eeprom_write_buffer
+                  0x000972                  _eeprom_read_string
+                  0x000988                  _eeprom_read_buffer
+                  0x0009bc                  _i2c_init
+                  0x0009d2                  _i2c_start
+                  0x0009e6                  _i2c_restart
+                  0x000a02                  _i2c_stop
+                  0x000a1e                  _i2c_ack
+                  0x000a3c                  _i2c_nack
+                  0x000a5a                  _i2c_write
+                  0x000a7a                  _i2c_read
+                  0x000b12                  _main
+                  0x000b60                  ___delay32
 
 External Symbols in Program Memory (by name):
 
-                  0x0002e8                  __DefaultInterrupt
-                  0x0008a0                  ___delay32
+                  0x000328                  __DefaultInterrupt
+                  0x000b60                  ___delay32
                   0x000252                  __data_init
                   0x000252                  __data_init_standard
                   0x00023c                  __psv_init
                   0x000200                  __resetPRI
-                  0x000314                  _io_init
-                  0x0007fe                  _lcd_clear
-                  0x000732                  _lcd_copy_string
-                  0x0006fa                  _lcd_cursor
-                  0x0007ec                  _lcd_home
-                  0x0003c6                  _lcd_init
-                  0x00078c                  _lcd_print
-                  0x0007ce                  _lcd_print_string
-                  0x00047c                  _lcd_send4bits
-                  0x0004f0                  _lcd_send8bits
-                  0x0005fe                  _lcd_sendchar
-                  0x000858                  _main
+                  0x000876                  _eeprom_init
+                  0x000988                  _eeprom_read_buffer
+                  0x000880                  _eeprom_read_byte
+                  0x000972                  _eeprom_read_string
+                  0x000942                  _eeprom_write_buffer
+                  0x0008d2                  _eeprom_write_byte
+                  0x000910                  _eeprom_write_string
+                  0x000a1e                  _i2c_ack
+                  0x0009bc                  _i2c_init
+                  0x000a3c                  _i2c_nack
+                  0x000a7a                  _i2c_read
+                  0x0009e6                  _i2c_restart
+                  0x0009d2                  _i2c_start
+                  0x000a02                  _i2c_stop
+                  0x000a5a                  _i2c_write
+                  0x000340                  _io_init
+                  0x00082a                  _lcd_clear
+                  0x00075e                  _lcd_copy_string
+                  0x000726                  _lcd_cursor
+                  0x000818                  _lcd_home
+                  0x0003f2                  _lcd_init
+                  0x0007b8                  _lcd_print
+                  0x0007fa                  _lcd_print_string
+                  0x0004a8                  _lcd_send4bits
+                  0x00051c                  _lcd_send8bits
+                  0x00062a                  _lcd_sendchar
+                  0x000b12                  _main
+                  0x000838                  _struct_init
 
 Memory Configuration
 
@@ -165,6 +204,9 @@ Linker script and memory map
 
 LOAD build/default/production/lcd.o
 LOAD build/default/production/main.o
+LOAD build/default/production/keypad.o
+LOAD build/default/production/eeprom.o
+LOAD build/default/production/i2c.o
                     0x0001                  __MPLAB_BUILD = 0x1
 LOAD pPIC24Fxxx
 LOAD /Applications/microchip/xc16/v1.41/bin/bin/../../lib/libfx-elf.a
@@ -186,7 +228,7 @@ LOAD /Applications/microchip/xc16/v1.41/bin/bin/../../lib/libfx-elf.a
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000200         0xee
+.text             0x000200        0x12e
  *(.init)
  .init            0x000200         0x4c /Applications/microchip/xc16/v1.41/bin/bin/../../lib/liblega-pic30-elf.a(crt0_standard.o)
                   0x000200                  __reset
@@ -198,16 +240,16 @@ LOAD /Applications/microchip/xc16/v1.41/bin/bin/../../lib/libfx-elf.a
  *(.user_init)
  *(.handle)
  *(.isr*)
- .isr             0x0002e8          0x4 default_isr
-                  0x0002e8                  __DefaultInterrupt
+ .isr             0x000328          0x4 default_isr
+                  0x000328                  __DefaultInterrupt
  *(.libc)
  *(.libm)
  *(.libdsp)
  *(.lib*)
  .libpic30_crt_start_mode
-                  0x0002ec          0x2 /Applications/microchip/xc16/v1.41/bin/bin/../../lib/liblega-pic30-elf.a(crt_start_mode_normal.Leo)
-                  0x0002ec                  __crt_start_mode_normal
-                  0x0002ec                  __crt_start_mode
+                  0x00032c          0x2 /Applications/microchip/xc16/v1.41/bin/bin/../../lib/liblega-pic30-elf.a(crt_start_mode_normal.Leo)
+                  0x00032c                  __crt_start_mode_normal
+                  0x00032c                  __crt_start_mode
 
 usercode
  *(usercode)
@@ -230,31 +272,42 @@ __CONFIG1         0x00abfe          0x2
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x1d6c
+.debug_info       0x000000       0x2e2d
  *(.debug_info)
- .debug_info      0x000000       0x18cb build/default/production/lcd.o
- .debug_info      0x0018cb        0x4a1 build/default/production/main.o
+ .debug_info      0x000000       0x18ff build/default/production/lcd.o
+ .debug_info      0x0018ff        0x5aa build/default/production/main.o
+ .debug_info      0x001ea9        0x119 build/default/production/keypad.o
+ .debug_info      0x001fc2        0x576 build/default/production/eeprom.o
+ .debug_info      0x002538        0x8f5 build/default/production/i2c.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x2ad
+.debug_abbrev     0x000000        0x53d
  *(.debug_abbrev)
  .debug_abbrev    0x000000        0x1aa build/default/production/lcd.o
- .debug_abbrev    0x0001aa        0x103 build/default/production/main.o
+ .debug_abbrev    0x0001aa         0xf3 build/default/production/main.o
+ .debug_abbrev    0x00029d         0x1f build/default/production/keypad.o
+ .debug_abbrev    0x0002bc        0x10d build/default/production/eeprom.o
+ .debug_abbrev    0x0003c9        0x174 build/default/production/i2c.o
 
-.debug_line       0x000000        0x277
+.debug_line       0x000000        0x48b
  *(.debug_line)
- .debug_line      0x000000        0x192 build/default/production/lcd.o
- .debug_line      0x000192         0xe5 build/default/production/main.o
+ .debug_line      0x000000        0x19d build/default/production/lcd.o
+ .debug_line      0x00019d         0xfd build/default/production/main.o
+ .debug_line      0x00029a         0x1a build/default/production/keypad.o
+ .debug_line      0x0002b4         0xc7 build/default/production/eeprom.o
+ .debug_line      0x00037b        0x110 build/default/production/i2c.o
 
-.debug_frame      0x000000        0x178
+.debug_frame      0x000000        0x366
  *(.debug_frame)
- .debug_frame     0x000000        0x148 build/default/production/lcd.o
- .debug_frame     0x000148         0x30 build/default/production/main.o
+ .debug_frame     0x000000        0x164 build/default/production/lcd.o
+ .debug_frame     0x000164         0x30 build/default/production/main.o
+ .debug_frame     0x000194         0xde build/default/production/eeprom.o
+ .debug_frame     0x000272         0xf4 build/default/production/i2c.o
 
-.debug_str        0x000000         0x8e
+.debug_str        0x000000         0xb0
  *(.debug_str)
  .debug_str       0x000000         0x85 build/default/production/lcd.o
- .debug_str       0x000085          0x9 build/default/production/main.o
+ .debug_str       0x000085         0x2b build/default/production/i2c.o
 
 .debug_loc
  *(.debug_loc)
@@ -263,22 +316,30 @@ __CONFIG1         0x00abfe          0x2
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x10b
+                  0x000000        0x257
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0xc9 build/default/production/lcd.o
+                  0x000000         0xd9 build/default/production/lcd.o
  .debug_pubnames
-                  0x0000c9         0x42 build/default/production/main.o
+                  0x0000d9         0x42 build/default/production/main.o
+ .debug_pubnames
+                  0x00011b         0xb6 build/default/production/eeprom.o
+ .debug_pubnames
+                  0x0001d1         0x86 build/default/production/i2c.o
 
 .debug_ranges
  *(.debug_ranges)
 
-.debug_aranges    0x000000         0x30
+.debug_aranges    0x000000         0x60
  *(.debug_aranges)
  .debug_aranges
                   0x000000         0x18 build/default/production/lcd.o
  .debug_aranges
                   0x000018         0x18 build/default/production/main.o
+ .debug_aranges
+                  0x000030         0x18 build/default/production/eeprom.o
+ .debug_aranges
+                  0x000048         0x18 build/default/production/i2c.o
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -1109,54 +1170,88 @@ LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000030        0x22e
+                  0x000060        0x31e
  .debug_pubtypes
-                  0x000030        0x1d5 build/default/production/lcd.o
+                  0x000060        0x1d5 build/default/production/lcd.o
  .debug_pubtypes
-                  0x000205         0x59 build/default/production/main.o
+                  0x000235         0x50 build/default/production/main.o
+ .debug_pubtypes
+                  0x000285         0x12 build/default/production/keypad.o
+ .debug_pubtypes
+                  0x000297         0x32 build/default/production/eeprom.o
+ .debug_pubtypes
+                  0x0002c9         0xb5 build/default/production/i2c.o
 
 __c30_signature
-                  0x00025e         0x1e
+                  0x00037e         0x30
  __c30_signature
-                  0x00025e          0x6 build/default/production/lcd.o
+                  0x00037e          0x6 build/default/production/lcd.o
  __c30_signature
-                  0x000264          0x6 build/default/production/main.o
+                  0x000384          0x6 build/default/production/main.o
  __c30_signature
-                  0x00026a          0x6 /Applications/microchip/xc16/v1.41/bin/bin/../../lib/liblega-pic30-elf.a(crt0_standard.o)
+                  0x00038a          0x6 build/default/production/keypad.o
  __c30_signature
-                  0x000270          0x6 /Applications/microchip/xc16/v1.41/bin/bin/../../lib/liblega-pic30-elf.a(data_init_standard.o)
+                  0x000390          0x6 build/default/production/eeprom.o
  __c30_signature
-                  0x000276          0x6 /Applications/microchip/xc16/v1.41/bin/bin/../../lib/liblega-pic30-elf.a(delay32.Leo)
+                  0x000396          0x6 build/default/production/i2c.o
+ __c30_signature
+                  0x00039c          0x6 /Applications/microchip/xc16/v1.41/bin/bin/../../lib/liblega-pic30-elf.a(crt0_standard.o)
+ __c30_signature
+                  0x0003a2          0x6 /Applications/microchip/xc16/v1.41/bin/bin/../../lib/liblega-pic30-elf.a(data_init_standard.o)
+ __c30_signature
+                  0x0003a8          0x6 /Applications/microchip/xc16/v1.41/bin/bin/../../lib/liblega-pic30-elf.a(delay32.Leo)
 
-.data               0x0800         0x64
+.data               0x0800         0x94
  .data              0x0800         0x64 build/default/production/lcd.o
                     0x0800                  _LCD
+ .data              0x0864         0x20 build/default/production/eeprom.o
+                    0x0864                  _EEPROM
+ .data              0x0884         0x10 build/default/production/i2c.o
+                    0x0884                  _I2C
 
-.const              0x82ee         0x26 load address 0x0002ee  
- .const             0x82ee         0x24 build/default/production/main.o
- .const             0x8312          0x2 build/default/production/lcd.o
+.const              0x832e         0x12 load address 0x00032e  
+ .const             0x832e         0x10 build/default/production/main.o
+ .const             0x833e          0x2 build/default/production/lcd.o
 
-.text             0x000314        0x4f8
- .text            0x000314        0x4f8 build/default/production/lcd.o
-                  0x000314                  _io_init
-                  0x0003c6                  _lcd_init
-                  0x00047c                  _lcd_send4bits
-                  0x0004f0                  _lcd_send8bits
-                  0x0005fe                  _lcd_sendchar
-                  0x0006fa                  _lcd_cursor
-                  0x000732                  _lcd_copy_string
-                  0x00078c                  _lcd_print
-                  0x0007ce                  _lcd_print_string
-                  0x0007ec                  _lcd_home
-                  0x0007fe                  _lcd_clear
+.text             0x000340        0x758
+ .text            0x000340        0x536 build/default/production/lcd.o
+                  0x000340                  _io_init
+                  0x0003f2                  _lcd_init
+                  0x0004a8                  _lcd_send4bits
+                  0x00051c                  _lcd_send8bits
+                  0x00062a                  _lcd_sendchar
+                  0x000726                  _lcd_cursor
+                  0x00075e                  _lcd_copy_string
+                  0x0007b8                  _lcd_print
+                  0x0007fa                  _lcd_print_string
+                  0x000818                  _lcd_home
+                  0x00082a                  _lcd_clear
+                  0x000838                  _struct_init
+ .text            0x000876        0x146 build/default/production/eeprom.o
+                  0x000876                  _eeprom_init
+                  0x000880                  _eeprom_read_byte
+                  0x0008d2                  _eeprom_write_byte
+                  0x000910                  _eeprom_write_string
+                  0x000942                  _eeprom_write_buffer
+                  0x000972                  _eeprom_read_string
+                  0x000988                  _eeprom_read_buffer
+ .text            0x0009bc         0xdc build/default/production/i2c.o
+                  0x0009bc                  _i2c_init
+                  0x0009d2                  _i2c_start
+                  0x0009e6                  _i2c_restart
+                  0x000a02                  _i2c_stop
+                  0x000a1e                  _i2c_ack
+                  0x000a3c                  _i2c_nack
+                  0x000a5a                  _i2c_write
+                  0x000a7a                  _i2c_read
 
-.dinit            0x00080c         0x4c
- .dinit           0x00080c         0x4c data_init
+.dinit            0x000a98         0x7a
+ .dinit           0x000a98         0x7a data_init
 
-.text             0x000858         0x48
- .text            0x000858         0x48 build/default/production/main.o
-                  0x000858                  _main
+.text             0x000b12         0x4e
+ .text            0x000b12         0x4e build/default/production/main.o
+                  0x000b12                  _main
 
-.init.delay32     0x0008a0         0x1c
- .init.delay32    0x0008a0         0x1c /Applications/microchip/xc16/v1.41/bin/bin/../../lib/liblega-pic30-elf.a(delay32.Leo)
-                  0x0008a0                  ___delay32
+.init.delay32     0x000b60         0x1c
+ .init.delay32    0x000b60         0x1c /Applications/microchip/xc16/v1.41/bin/bin/../../lib/liblega-pic30-elf.a(delay32.Leo)
+                  0x000b60                  ___delay32
