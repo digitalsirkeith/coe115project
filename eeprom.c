@@ -89,7 +89,7 @@ void eeprom_write_buffer(unsigned int addr, void *buf, unsigned int buflen)
 void eeprom_read_string(unsigned int addr, char *string, unsigned int strlen)
 {
     EEPROM.read_buffer(addr, string, strlen);
-//    string[strlen] = 0;
+    string[strlen] = 0;
 }
 
 void eeprom_read_buffer(unsigned int addr, void *buf, unsigned int buflen)

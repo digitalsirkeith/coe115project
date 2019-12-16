@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=lcd.c main.c keypad.c eeprom.c i2c.c spi.c
+SOURCEFILES_QUOTED_IF_SPACED=lcd.c main.c keypad.c eeprom.c i2c.c spi.c profile.c game.c button.c led.c potentiometer.c util.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/lcd.o ${OBJECTDIR}/main.o ${OBJECTDIR}/keypad.o ${OBJECTDIR}/eeprom.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/spi.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/lcd.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/keypad.o.d ${OBJECTDIR}/eeprom.o.d ${OBJECTDIR}/i2c.o.d ${OBJECTDIR}/spi.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/lcd.o ${OBJECTDIR}/main.o ${OBJECTDIR}/keypad.o ${OBJECTDIR}/eeprom.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/spi.o ${OBJECTDIR}/profile.o ${OBJECTDIR}/game.o ${OBJECTDIR}/button.o ${OBJECTDIR}/led.o ${OBJECTDIR}/potentiometer.o ${OBJECTDIR}/util.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/lcd.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/keypad.o.d ${OBJECTDIR}/eeprom.o.d ${OBJECTDIR}/i2c.o.d ${OBJECTDIR}/spi.o.d ${OBJECTDIR}/profile.o.d ${OBJECTDIR}/game.o.d ${OBJECTDIR}/button.o.d ${OBJECTDIR}/led.o.d ${OBJECTDIR}/potentiometer.o.d ${OBJECTDIR}/util.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/lcd.o ${OBJECTDIR}/main.o ${OBJECTDIR}/keypad.o ${OBJECTDIR}/eeprom.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/spi.o
+OBJECTFILES=${OBJECTDIR}/lcd.o ${OBJECTDIR}/main.o ${OBJECTDIR}/keypad.o ${OBJECTDIR}/eeprom.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/spi.o ${OBJECTDIR}/profile.o ${OBJECTDIR}/game.o ${OBJECTDIR}/button.o ${OBJECTDIR}/led.o ${OBJECTDIR}/potentiometer.o ${OBJECTDIR}/util.o
 
 # Source Files
-SOURCEFILES=lcd.c main.c keypad.c eeprom.c i2c.c spi.c
+SOURCEFILES=lcd.c main.c keypad.c eeprom.c i2c.c spi.c profile.c game.c button.c led.c potentiometer.c util.c
 
 
 
@@ -137,6 +137,48 @@ ${OBJECTDIR}/spi.o: spi.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  spi.c  -o ${OBJECTDIR}/spi.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/spi.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/spi.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/profile.o: profile.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/profile.o.d 
+	@${RM} ${OBJECTDIR}/profile.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  profile.c  -o ${OBJECTDIR}/profile.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/profile.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/profile.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/game.o: game.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/game.o.d 
+	@${RM} ${OBJECTDIR}/game.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  game.c  -o ${OBJECTDIR}/game.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/game.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/game.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/button.o: button.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/button.o.d 
+	@${RM} ${OBJECTDIR}/button.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  button.c  -o ${OBJECTDIR}/button.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/button.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/button.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/led.o: led.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/led.o.d 
+	@${RM} ${OBJECTDIR}/led.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  led.c  -o ${OBJECTDIR}/led.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/led.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/led.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/potentiometer.o: potentiometer.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/potentiometer.o.d 
+	@${RM} ${OBJECTDIR}/potentiometer.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  potentiometer.c  -o ${OBJECTDIR}/potentiometer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/potentiometer.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/potentiometer.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/util.o: util.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/util.o.d 
+	@${RM} ${OBJECTDIR}/util.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  util.c  -o ${OBJECTDIR}/util.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/util.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1    -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/util.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 else
 ${OBJECTDIR}/lcd.o: lcd.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -179,6 +221,48 @@ ${OBJECTDIR}/spi.o: spi.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/spi.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  spi.c  -o ${OBJECTDIR}/spi.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/spi.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/spi.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/profile.o: profile.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/profile.o.d 
+	@${RM} ${OBJECTDIR}/profile.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  profile.c  -o ${OBJECTDIR}/profile.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/profile.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/profile.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/game.o: game.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/game.o.d 
+	@${RM} ${OBJECTDIR}/game.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  game.c  -o ${OBJECTDIR}/game.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/game.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/game.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/button.o: button.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/button.o.d 
+	@${RM} ${OBJECTDIR}/button.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  button.c  -o ${OBJECTDIR}/button.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/button.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/button.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/led.o: led.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/led.o.d 
+	@${RM} ${OBJECTDIR}/led.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  led.c  -o ${OBJECTDIR}/led.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/led.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/led.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/potentiometer.o: potentiometer.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/potentiometer.o.d 
+	@${RM} ${OBJECTDIR}/potentiometer.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  potentiometer.c  -o ${OBJECTDIR}/potentiometer.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/potentiometer.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/potentiometer.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/util.o: util.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/util.o.d 
+	@${RM} ${OBJECTDIR}/util.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  util.c  -o ${OBJECTDIR}/util.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/util.o.d"        -g -omf=elf -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -O0 -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/util.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 

@@ -1,6 +1,3 @@
-
-// This is a guard condition so that contents of this file are not included
-// more than once.  
 #ifndef UTIL_HEADER_H
 #define	UTIL_HEADER_H
 #include <xc.h> // include processor files - each processor file is guarded.  
@@ -8,6 +5,20 @@
 #define FCY 4000000
 #include "libpic30.h"
 
+/*
+ *  SPI
+ *  PEER_TYPE: Required such that the two boards has only one server and one client
+ */
+
+enum peer_type {
+    MASTER,
+    SLAVE
+};
+
+/*
+ *  LCD
+ *  Set below the configurations for the LCD
+ */
 
 #define E _LATB5
 #define RS _LATB4
@@ -23,17 +34,61 @@
 #define TRIS_D5 _TRISB1
 #define TRIS_D4 _TRISB0
 
-#define R1 _LATB11
-#define R2 _LATB10
-#define C1 _RB9
-#define C2 _RB8
-#define C3 _RB7
+/*
+ *  Keypad
+ *  Only two rows and three columns shall be functional
+ */
 
-#define TRIS_R1 _TRISB11
-#define TRIS_R2 _TRISB10
-#define TRIS_C1 _TRISB9
-#define TRIS_C4 _TRISB8
-#define TRIS_C5 _TRISB7
+#define R1 _LATA4
+#define R2 _LATA3
+#define C1 _RA2
+#define C2 _RA1
+#define C3 _RA0
 
-#endif	/* XC_HEADER_TEMPLATE_H */
+#define TRIS_R1 _TRISA4
+#define TRIS_R2 _TRISA3
+#define TRIS_C1 _TRISA2
+#define TRIS_C2 _TRISA1
+#define TRIS_C3 _TRISA0
 
+#define CNPUE_C1 _CN30PUE
+#define CNPUE_C2 _CN3PUE
+#define CNPUE_C3 _CN2PUE
+
+/*
+ * Button
+ */
+
+#define TRIS_BTN _TRISB13
+#define BTN _RB13
+#define CNPUE_BTN _CN13PUE
+
+/*
+ * LED
+ * Blinking or Steady
+ */
+
+#define TRIS_LED    _TRISB14
+#define LIGHT       _LATB14
+
+//SPI
+#define SDI__   _RB10
+#define SCLK    _RB7
+#define SDO_    _LAT11
+
+
+void copy_str(const char *src, char *dst);
+
+// Redefinitions
+#define LCD     lcd
+#define Game    game
+#define Button  button
+#define Pot     potentiometer
+#define LED     led
+#define Profile profile
+#define I2C     i2c
+#define EEPROM  ee_prom
+#define Socket  socket
+#define Keypad  keypad
+
+#endif

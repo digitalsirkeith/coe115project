@@ -1,4 +1,7 @@
 #include "i2c.h"
+#include "lcd.h"
+
+extern struct lcd LCD;
 
 struct i2c I2C = {
     .init       = i2c_init,
@@ -97,6 +100,7 @@ int i2c_write(uint8_t byte)
     // Clear interrupt flag
     IFS1bits.MI2C1IF = 0;
     // Return Acknowledge bit received
+    
     return I2C1STATbits.ACKSTAT;
 }
 

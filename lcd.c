@@ -13,9 +13,9 @@ struct lcd LCD = {
     
     .init = lcd_init,
     .send = {
-        lcd_send4bits,
-        lcd_send8bits,
-        lcd_sendchar
+        .bits4 = lcd_send4bits,
+        .bits8 = lcd_send8bits,
+        .character = lcd_sendchar
     },
     .set_cursor = lcd_cursor,
     .set_line = lcd_copy_string,
@@ -55,30 +55,9 @@ void io_init()
     OC2CON2bits.SYNCSEL = 0x1F;               //Synchronized by itself
     OC2CON1bits.OCTSEL = 0x07;                  //Peripheral clock is the source for output Compare
     
-//    KEYPAD
-    _TRISB7 = 1;
-    _TRISB8 = 1;
-    _TRISB9 = 1;
-    _TRISB10 = 0;
-    _TRISB11 = 0;
-    
-    _CN21PUE = 1;
-    _CN22PUE = 1;
-    _CN23PUE = 1;
-    
 //    ADC
     _TRISB15 = 1;
-    AD1PCFG = 0xFDFF;
-    
-    AD1CON1 = 0xE0; // set form to integer
-    AD1CON2 = 0;
-    AD1CHS = 0x0009;
-    AD1CON3bits.SAMC = 2; // Tsamp
-    AD1CON3bits.ADCS = 1; // Tad
-    AD1CON1bits.ADON = 1;
-    
-//    BUTTON
-    _TRISA0 = 1;
+    AD1PCFG = 0xFFFF;
 }
 
 void lcd_init()

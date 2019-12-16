@@ -5,6 +5,13 @@
         <group>
             <file>file:/Users/ucl/MPLABXProjects/coe115_project.X/main.c</file>
             <file>file:/Users/ucl/MPLABXProjects/coe115_project.X/lcd.c</file>
+            <file>file:/Users/ucl/MPLABXProjects/coe115_project.X/led.c</file>
+            <file>file:/Users/ucl/MPLABXProjects/coe115_project.X/eeprom.c</file>
+            <file>file:/Users/ucl/MPLABXProjects/coe115_project.X/i2c.c</file>
+            <file>file:/Users/ucl/MPLABXProjects/coe115_project.X/spi.h</file>
+            <file>file:/Users/ucl/MPLABXProjects/coe115_project.X/game.c</file>
+            <file>file:/Users/ucl/MPLABXProjects/coe115_project.X/util.h</file>
+            <file>file:/Users/ucl/MPLABXProjects/coe115_project.X/spi.c</file>
         </group>
     </open-files>
 </project-private>
